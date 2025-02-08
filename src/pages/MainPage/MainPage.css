@@ -1,0 +1,23 @@
+.error-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error-container__image{
+  max-width: 50%;
+  padding-bottom: 30px;
+}
+
+.error-container__message,
+.error-container__message {
+  text-align: center;
+  font-size: 20px;
+  color: #666;
+}
+
+.error-container__message {
+  color: #ff0000;
+}
