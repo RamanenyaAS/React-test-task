@@ -1,0 +1,76 @@
+.seminar-container{
+  width: 45vw;
+  border-radius: 10px;
+  background-color: #EBF0FA;
+  padding: 25px;
+  margin: 10px;
+}
+
+.seminar-block{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.seminar-left__img{
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.left-block{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 16px;
+  color: #8D8E97;
+  padding-top: 15px;
+}
+
+.seminar-right{
+  width: 55%;
+}
+
+.seminar-right__title{
+  font-size: 18px;
+  font-weight: 600;
+  color: #313037;
+  padding-bottom: 25px;
+}
+
+.seminar-right__description{
+  font-size: 16px;
+}
+
+.right-block{
+  display: flex
+  ;
+      justify-content: flex-end;
+}
+
+.right-block__button {
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.6s;
+}
+
+.right-block__button_edit {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.right-block__button_edit:hover {
+  background-color: #ec971f;
+}
+
+.right-block__button_delete {
+  background-color: #e73c36;
+  color: white;
+}
+
+.right-block__button_delete:hover {
+  background-color: #c9302c;
+}
