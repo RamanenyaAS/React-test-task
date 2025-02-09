@@ -20,3 +20,9 @@ export interface IInput {
   onChange: (event: any) => void,
   value?: string
 }
+
+export interface IButton {
+  text: string,
+  type: string,
+  onClick: () => void
+}

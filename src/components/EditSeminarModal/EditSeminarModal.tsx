@@ -4,6 +4,7 @@ import "./EditSeminarModal.css";
 import { ISeminar } from "../../types/interfaces";
 import { useDispatch } from "react-redux";
 import Input from "../Input/Input";
+import Button from "../Button/Button";
 
 function EditSeminarModal({ seminar, onClose }: { seminar: ISeminar, onClose: () => void }) {
 
@@ -43,7 +44,7 @@ function EditSeminarModal({ seminar, onClose }: { seminar: ISeminar, onClose: ()
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content">
         <div className="modal-container">
-          <h2>Редактирование семинара</h2>
+          <h2>Edit Seminar</h2>
           <Input title="Title" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} ></Input>
           <div className="textarea__title">{"Description"}</div>
           <textarea
@@ -55,8 +56,8 @@ function EditSeminarModal({ seminar, onClose }: { seminar: ISeminar, onClose: ()
           <Input title="Time" type="time" placeholder="Time" value={time} onChange={(e) => setTime(e.target.value)} ></Input>
           <Input title="Photo URL" type="text" placeholder="Photo URL" value={photo} onChange={(e) => setPhoto(e.target.value)} ></Input>
           <div className="modal-buttons">
-            <button className="modal-button save" onClick={handleSave}>Сохранить</button>
-            <button className="modal-button cancel" onClick={onClose}>Отмена</button>
+            <Button type="button button_save" onClick={handleSave} text="Save"></Button>
+            <Button type="button button_cancel" onClick={onClose} text="Cancel"></Button>
           </div>
         </div>
       </div>

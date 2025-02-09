@@ -1,4 +1,4 @@
-.error-container{
+.error-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,7 +6,7 @@
   height: 100vh;
 }
 
-.error-container__image{
+.error-container__image {
   max-width: 50%;
   padding-bottom: 30px;
 }

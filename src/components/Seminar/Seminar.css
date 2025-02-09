@@ -85,8 +85,8 @@
   background-color: #c9302c;
 }
 
-@media (max-width: 1570px){
-  .seminar-container{
+@media (max-width: 1570px) {
+  .seminar-container {
     min-height: 250px;
   }
 }

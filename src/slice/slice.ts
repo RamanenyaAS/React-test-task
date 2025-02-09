@@ -70,7 +70,6 @@ export const seminarsSlice = createSlice({
       state.error = null;
     }),
       builder.addCase(fetchSeminars.fulfilled, (state: IInitialState, { payload }: { payload: any }) => {
-        console.log("Ответ от сервера:", payload);
         state.status = "fulfilled";
         state.seminars = payload;
       }),

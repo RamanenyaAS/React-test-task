@@ -1,4 +1,4 @@
-.input{
+.input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -6,7 +6,7 @@
   border-radius: 4px;
 }
 
-.input__title{
+.input__title {
   text-align: left;
   font-size: 16px;
   font-weight: 600;

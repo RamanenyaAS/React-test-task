@@ -4,6 +4,7 @@ import './Seminar.css'
 import { deleteSeminar } from "../../slice/slice";
 import { useState } from "react";
 import EditSeminarModal from "../EditSeminarModal/EditSeminarModal";
+import Button from "../Button/Button";
 
 function Seminar({ seminar }: { seminar: ISeminar }) {
 
@@ -36,8 +37,8 @@ function Seminar({ seminar }: { seminar: ISeminar }) {
             <div className="seminar-right__title">{seminar.title}</div>
             <div className="seminar-right__description">{seminar.description}</div>
             <div className="right-block">
-              <button className="right-block__button right-block__button_edit" onClick={handleEditClick}>{"Edit"}</button>
-              <button className="right-block__button right-block__button_delete" onClick={handleDelClick}>{"Delete"}</button>
+              <Button type="right-block__button right-block__button_edit" onClick={handleEditClick} text="Edit"></Button>
+              <Button type="right-block__button right-block__button_delete" onClick={handleDelClick} text="Delete"></Button>
             </div>
           </div>
         </div>
