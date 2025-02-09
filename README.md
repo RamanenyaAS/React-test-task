@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npx json-server --watch db.json --port 5000`
+
+Runs the json server\
+Open [http://localhost:5000/seminars](http://localhost:5000/seminars) to view server data.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console
+
 ### `npm start`
 
 Runs the app in the development mode.\
