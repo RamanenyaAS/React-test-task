@@ -2,14 +2,16 @@ import { useDispatch } from "react-redux";
 import { ISeminar } from "../../types/interfaces";
 import './Seminar.css'
 import { deleteSeminar } from "../../slice/slice";
+import { useState } from "react";
+import EditSeminarModal from "../EditSeminarModal/EditSeminarModal";
 
 function Seminar({ seminar }: { seminar: ISeminar }) {
 
   const dispatch = useDispatch()<any>;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  
   const handleEditClick = () => {
-
+    setIsModalOpen(true);
   }
 
   const handleDelClick = () => {
@@ -40,6 +42,12 @@ function Seminar({ seminar }: { seminar: ISeminar }) {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <EditSeminarModal
+          seminar={seminar}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IInitialState } from "../types/interfaces";
+import { IInitialState, ISeminar } from "../types/interfaces";
 
 export const fetchSeminars = createAsyncThunk(
   'seminars/fetchSeminars',
@@ -29,6 +29,27 @@ export const deleteSeminar = createAsyncThunk(
         throw new Error("Ошибка при удалении семинара");
       }
       return seminarId;
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
+    }
+  }
+);
+
+export const editSeminar = createAsyncThunk(
+  "seminars/editSeminar",
+  async (updatedSeminar: ISeminar, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`http://localhost:5000/seminars/${updatedSeminar.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedSeminar), // Отправляем весь объект
+      });
+
+      if (!response.ok) {
+        throw new Error("Ошибка при редактировании семинара");
+      }
+
+      return await response.json();
     } catch (error) {
       return rejectWithValue((error as Error).message);
     }
@@ -68,7 +89,19 @@ export const seminarsSlice = createSlice({
       builder.addCase(deleteSeminar.rejected, (state: IInitialState, action: any) => {
         state.status = "rejected";
         state.error = action.payload;
-      })
+      }),
+      builder.addCase(editSeminar.pending, (state: IInitialState) => {
+        state.status = "pending";
+        state.error = null;
+      }),
+      builder.addCase(editSeminar.fulfilled, (state: IInitialState, action: any) => {
+        state.seminars = state.seminars.map((seminar) =>
+          seminar.id === action.payload.id ? action.payload : seminar
+        );
+      }),
+      builder.addCase(editSeminar.rejected, (state: IInitialState, action: any) => {
+        state.error = action.payload;
+      });
   }
 })
 

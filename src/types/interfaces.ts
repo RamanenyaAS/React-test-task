@@ -12,3 +12,11 @@ export interface IInitialState {
   status: null | string,
   error: null | string,
 }
+
+export interface IInput {
+  title: string,
+  type: string,
+  placeholder: string,
+  onChange: (event: any) => void,
+  value?: string
+}
