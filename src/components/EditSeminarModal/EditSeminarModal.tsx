@@ -1,6 +1,6 @@
+import "./EditSeminarModal.css";
 import { useState } from "react";
 import { editSeminar, fetchSeminars } from "../../slice/slice";
-import "./EditSeminarModal.css";
 import { ISeminar } from "../../types/interfaces";
 import { useDispatch } from "react-redux";
 import Input from "../Input/Input";
@@ -8,20 +8,26 @@ import Button from "../Button/Button";
 
 function EditSeminarModal({ seminar, onClose }: { seminar: ISeminar, onClose: () => void }) {
 
+  // dispatch для отправки действий
   const dispatch = useDispatch()<any>;
+
+  // Состояния для управления значениями инпутов
   const [title, setTitle] = useState(seminar.title);
   const [description, setDescription] = useState(seminar.description);
   const [date, setDate] = useState(seminar.date);
   const [photo, setPhoto] = useState(seminar.photo);
   const [time, setTime] = useState(seminar.time);
 
+  // Функция для закрытия модального окна при клике за его поле
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
+  // Функция для сохранения изменений семинара
   const handleSave = async () => {
+    // Создал объект с измененными значениями
     const updatedSeminar: ISeminar = {
       ...seminar,
       title,
@@ -31,12 +37,12 @@ function EditSeminarModal({ seminar, onClose }: { seminar: ISeminar, onClose: ()
       time
     };
     try {
-      await dispatch(editSeminar(updatedSeminar)).unwrap();
+      await dispatch(editSeminar(updatedSeminar)).unwrap(); // Отправляем запрос на редактирование
       await dispatch(fetchSeminars()); // Обновляем список семинаров после редактирования
     } catch (error) {
       console.error("Ошибка при редактировании:", error);
     } finally {
-      onClose();
+      onClose(); // Закрываем окно независимо от результата
     }
   };
 

@@ -1,5 +1,5 @@
+import "./Button.css";
 import { IButton } from "../../types/interfaces";
-import './Button.css'
 
 function Button({ text, type, onClick }: IButton) {
 

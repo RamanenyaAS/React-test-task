@@ -1,6 +1,6 @@
+import "./Seminar.css";
 import { useDispatch } from "react-redux";
 import { ISeminar } from "../../types/interfaces";
-import './Seminar.css'
 import { deleteSeminar } from "../../slice/slice";
 import { useState } from "react";
 import EditSeminarModal from "../EditSeminarModal/EditSeminarModal";
@@ -8,13 +8,18 @@ import Button from "../Button/Button";
 
 function Seminar({ seminar }: { seminar: ISeminar }) {
 
+  // dispatch для отправки действий 
   const dispatch = useDispatch()<any>;
+
+  // Состояние для отслеживания открыто ли модальное окно
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Функция для открытия модального окна редактирования семинара
   const handleEditClick = () => {
     setIsModalOpen(true);
   }
 
+  // Функция для удаления семинара с подтверждение через window.confirm встроенный в бразуер
   const handleDelClick = () => {
     const isConfirmed = window.confirm("Вы уверены, что хотите удалить семинар?");
     if (isConfirmed) {
@@ -43,6 +48,7 @@ function Seminar({ seminar }: { seminar: ISeminar }) {
           </div>
         </div>
       </div>
+      {/* Отображаем модальное окно если оно открыто */}
       {isModalOpen && (
         <EditSeminarModal
           seminar={seminar}

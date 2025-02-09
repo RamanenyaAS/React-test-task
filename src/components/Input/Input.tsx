@@ -1,4 +1,4 @@
-import './Input.css'
+import "./Input.css";
 import { IInput } from '../../types/interfaces';
 
 function Input({ title, type, placeholder, onChange, value }: IInput) {

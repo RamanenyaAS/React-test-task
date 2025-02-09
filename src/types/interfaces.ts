@@ -18,7 +18,7 @@ export interface IInput {
   type: string,
   placeholder: string,
   onChange: (event: any) => void,
-  value?: string
+  value?: string // Сделал необязательным т.к. при каждом открытии редактирования в консоль летели варнинги из-за поля Date
 }
 
 export interface IButton {

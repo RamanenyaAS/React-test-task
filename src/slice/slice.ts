@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IInitialState, ISeminar } from "../types/interfaces";
 
+// Запрос для получения списка семинаров
 export const fetchSeminars = createAsyncThunk(
   'seminars/fetchSeminars',
   async function (_, { rejectWithValue }) {
@@ -10,7 +11,7 @@ export const fetchSeminars = createAsyncThunk(
         throw new Error("Ошибка при запросе на сервер")
       }
       const data = await response.json();
-      return data;
+      return data; // Возвращаем данные
     }
     catch (error) {
       return rejectWithValue((error as Error).message);
@@ -18,6 +19,7 @@ export const fetchSeminars = createAsyncThunk(
   }
 )
 
+// Запрос для удаления семинара по id
 export const deleteSeminar = createAsyncThunk(
   "seminars/deleteSeminar",
   async (seminarId: number, { rejectWithValue }) => {
@@ -28,13 +30,14 @@ export const deleteSeminar = createAsyncThunk(
       if (!response.ok) {
         throw new Error("Ошибка при удалении семинара");
       }
-      return seminarId;
+      return seminarId; // Возвращаем id удаленного семинара, чтобы обновить состояние
     } catch (error) {
       return rejectWithValue((error as Error).message);
     }
   }
 );
 
+// Запрос для редактирования семинара по id
 export const editSeminar = createAsyncThunk(
   "seminars/editSeminar",
   async (updatedSeminar: ISeminar, { rejectWithValue }) => {
@@ -42,14 +45,14 @@ export const editSeminar = createAsyncThunk(
       const response = await fetch(`http://localhost:5000/seminars/${updatedSeminar.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedSeminar), // Отправляем весь объект
+        body: JSON.stringify(updatedSeminar), // Отправляем обновленные данные семинара
       });
 
       if (!response.ok) {
         throw new Error("Ошибка при редактировании семинара");
       }
 
-      return await response.json();
+      return await response.json(); // Возвращаем обновленный объект семинара
     } catch (error) {
       return rejectWithValue((error as Error).message);
     }
