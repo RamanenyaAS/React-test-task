@@ -1,14 +1,22 @@
+import { useDispatch } from "react-redux";
 import { ISeminar } from "../../types/interfaces";
 import './Seminar.css'
+import { deleteSeminar } from "../../slice/slice";
 
 function Seminar({ seminar }: { seminar: ISeminar }) {
 
+  const dispatch = useDispatch()<any>;
+
+  
   const handleEditClick = () => {
 
   }
 
   const handleDelClick = () => {
-
+    const isConfirmed = window.confirm("Вы уверены, что хотите удалить семинар?");
+    if (isConfirmed) {
+      dispatch(deleteSeminar(seminar.id));
+    }
   }
 
   return (

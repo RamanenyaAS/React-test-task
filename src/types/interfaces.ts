@@ -1,9 +1,3 @@
-export interface IButton{
-  text: string,
-  type: string,
-  onClick: (event: any) => void
-}
-
 export interface ISeminar {
   id: number,
   title: string,
